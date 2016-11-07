@@ -1,5 +1,5 @@
 public class floor implements viewFloor,robotPath {
-	int size = 8;
+	int size = 7;
 	Point[] belt = null;
 	Point[] sPoint = null;
 	Shelf[] shelf = new Shelf[4];
@@ -23,13 +23,13 @@ public class floor implements viewFloor,robotPath {
 		packer = new Point(1,1);
 		packer.packer = true;
 		
-		picker = new Point(1,6);
+		picker = new Point(1,5);
 		picker.picker = true;
 		
 		receving = new Point();
 		receving.receving = true;
 		
-		charger = new Point(2,7);
+		charger = new Point(2,6);
 		charger.charger = true;
 		
 		shipping = new Point(0,0);
@@ -140,6 +140,13 @@ class Shelf{
 		return Capacity -= amount;
 	}
 	
+	// floor will memorize the new location where robot
+	// put the shelf at
+	public Point reSetLocation(Point P){
+		this.x = P.x;
+		this.y = P.y;
+		P.shelf = true;
+	}
 	
 }
 
