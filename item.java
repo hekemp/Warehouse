@@ -1,16 +1,26 @@
 package inventory;
+/** 
+ *  
+ * @author Yunfan Jiang
+ * 
+ */ 
 
 public class item {
 	String type;      
 	int itemID;       //Each item has an unique itemID
-	int minprefered;  //minmmum amount of this item 
-	boolean ordered;
+	Shelf place;
 	
-	item(int id){
+	item(int id, String name){
 		itemID=id;
+		place=null;
+		type=name;
 	}
-
-
+	public Shelf setplace(Shelf x){
+	place=x;
+	}
+	public Shelf getplace(){
+		return place;
+	}
 	
 	
 
