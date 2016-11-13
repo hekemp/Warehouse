@@ -1,5 +1,12 @@
 package warehouse;
 
+/**
+* @author Rachel Schneberger
+*
+* This class has the funcionality for a single a robot. 
+* There can be multiple robots in use at the same time. 
+*/
+
 public class Robot {
 	private int robotId;
 	private int robotCharge;
