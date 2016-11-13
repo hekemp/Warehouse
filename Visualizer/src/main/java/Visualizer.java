@@ -10,20 +10,15 @@ import javax.swing.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author zhaoxinglu
+ * This class is to use Java Swing to show a picture of the warehouse
  */
 public class Visualizer {
-   
-    
-    
+ 
+
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
@@ -32,6 +27,11 @@ public class Visualizer {
       });
     }
 
+/**
+ *
+ * @author zhaoxinglu
+ * This method create GUI and label it "warehouse"
+ */
     private static void createAndShowGUI() {
        
         JFrame f = new JFrame("Warehouse");
@@ -44,7 +44,17 @@ public class Visualizer {
 
 
 }
+
+/**
+ *
+ * @author zhaoxinglu
+ * MyPanel class collect warehouse data and visualizes it on the panel
+ */
 class MyPanel extends JPanel {
+    /**
+    * @author zhaoxinglu
+    * initializer sets line border's color to be black
+    */
     public MyPanel() {
          setBorder(BorderFactory.createLineBorder(Color.black));
          
@@ -54,7 +64,12 @@ class MyPanel extends JPanel {
     Robotdata r;
     Inventorydata i;
     Orderdata o;
-    
+ 
+/**
+ *
+ * @author zhaoxinglu
+ * printout method print what is happening in the warehouse
+ */
     
     public void printout(){
         System.out.println("Item is at:"+b.TrackItem());
@@ -62,7 +77,14 @@ class MyPanel extends JPanel {
         System.out.println("Inventory is :"+i.inventorylist());
         System.out.println("Robot is at"+o.orderlist());
     }
-    
+  
+	
+/**
+ *
+ * @author zhaoxinglu
+ * @param Graphics
+ * paint method temporarily uses mock object and expected return data to draw the warehouse
+ */
     
     public void paint(Graphics g) {
        viewFloor f1=mock(viewFloor.class);
@@ -109,10 +131,20 @@ class MyPanel extends JPanel {
        
   }
 }
-
+/**
+ *
+ * @author zhaoxinglu
+ * point class helps to get coordinates of items
+ */
 class Point{
     int x;
     int y;
+ /**
+ *
+ * @author zhaoxinglu
+ * two initializer, one can take parameters to set coordinates 
+ * the other one defines exact coordinate numbers
+ */
     public Point(int x, int y){
         this.x=x;
         this.y=y;
@@ -122,6 +154,13 @@ class Point{
         
     }
 }
+
+/**
+ *
+ * @author zhaoxinglu
+ * interface from floor class, get information of where belt, shelf, packer
+ * picker, receiving dock, shipping dock are and the floor size.
+ */
 interface viewFloor{
   public Point[] getBelt();
   public Point[] getShelf();
@@ -133,19 +172,38 @@ interface viewFloor{
   public int floorSize();
   
   }
+
+/**
+ *
+ * @author zhaoxinglu
+ * interface from belt class, get information of where the item on the belt is.
+ */
 interface Beltdata{
    public Point TrackItem();
   
   
      }
+/**
+ *
+ * @author zhaoxinglu
+ * interface from robot class, get coordinate of the movement of robot
+ */
 interface Robotdata{
     public Point TrackRobot();
   }
-
+/**
+ *
+ * @author zhaoxinglu
+ * interface from order class, get information of the orderlist
+ */
 interface Orderdata{
     public String orderlist();
 }
-
+/**
+ *
+ * @author zhaoxinglu
+ * interface from inventory class, get information of the inventorylist
+ */
 interface Inventorydata{
     public String inventorylist();
 }
