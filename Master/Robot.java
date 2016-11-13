@@ -1,5 +1,14 @@
 import java.util.*;
 
+/**
+ * 
+ * @author Heather Kemp
+ * the Master/Robot.java class is a mock version of the Robot.java object, created simply to test the Master's ability to
+ * cycle through events.
+ * It only implements the methods required by the Event interface and one simple move method.
+ *
+ */
+
 public class Robot implements Event {
 
     private int myID;
@@ -9,6 +18,11 @@ public class Robot implements Event {
     private PriorityQueue<Event> myEvents;
     private PriorityQueue<String> myParameters;
 
+    /**
+	 * Constructor initializes x location, y location, and ID, as well as the queues for events and arraylist for movements.
+     * It saves these instance fields as the above variables for future use.
+	 */
+    
     public Robot(int x, int y, int ID){
         myX = x;
         myY = y;
@@ -18,6 +32,11 @@ public class Robot implements Event {
         myParameters = new PriorityQueue<String>();
     }
     
+    /** Moves the robot. This method updates the robot's x and y location, prints out the action, and enqueues the next move.
+     *
+     * @input - x, an integer that marks the horizontal location of the robot
+     * @input - y, an integer that marks the verticle location of the robot.
+     */
     public void move(int x, int y){
         if(x == 1 && y == 1)
             {
@@ -34,6 +53,10 @@ public class Robot implements Event {
             
     }
     
+    /**
+	 * Gets the event. Returns this object as an Event
+	 */
+    
     public Event getEvent(){
     if(myEvents.isEmpty())
         return (Event) new Robot(1,1,1);
@@ -41,6 +64,10 @@ public class Robot implements Event {
         return myEvents.remove();   
     
     }
+    
+    /**
+	 * Gets the parameters. Returns the parameter for the next call of this method.
+	 */
     
     public String getPara(){
         if(myParameters.isEmpty())
@@ -50,6 +77,12 @@ public class Robot implements Event {
         
         }
 
+    /**
+	 * Performs an action. Extracts the method to be executed and parameters from the method strong and then executes these
+	 * methods.
+	 * @input - a string which contains a method name/key and parameters, seperated by commas
+	 */
+    
     @Override
     public void performAction(String Method) {
             if(Method == "move,1,1")
@@ -59,6 +92,4 @@ public class Robot implements Event {
         
     }
     
-    
-    /// move method moves the 1/1 but then enques another move with x,y
 }
