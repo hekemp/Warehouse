@@ -7,7 +7,8 @@ package warehouse;
 * There can be multiple robots in use at the same time. 
 */
 
-public class Robot {
+public class Robot implements Event{
+	
 	private int robotId;
 	private int robotCharge;
 	private boolean shelf = false;
@@ -39,6 +40,8 @@ public class Robot {
 		 */
 		xCord = x;
 		yCord = y;
+		System.out.println( "Robot: " + robotId + " has moved: " + xCord + yCord);
+		
 	}
 	
 	/*
