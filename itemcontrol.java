@@ -4,20 +4,25 @@ import java.awt.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * 
+ * @author Yunfan Jiang
+ *
+ */
 public class itemcontrol {
 	int numberinstock;
 	int currentID;           
 	int maxinventory=80;
 	int mininventory;
 	String[] itemtypes;
+	Floor floor;
 	HashMap<String,ArrayList<Integer>> inventory; //key: item type, value: item ID 
 	//initialize
 	String[] itemlist={"pen","pear","apple","banana","pen","pineapple"};
 	void itemcontrol(){
-		//import a list of items
 		numberinstock=0;
 		currentID=0;
-		
+		//extract item from the item list and put it on the shelf.
 		for (int z=0;z<itemlist.length&&z<maxinventory;z++){
 			item a= new item(currentID);    
 			a.type=itemlist[z]; 
@@ -27,12 +32,22 @@ public class itemcontrol {
 		}
 		
 	}
+	item finditem(String product){
+		
+		
+		
+	}
+	
+	Item removeitem(item a, Shelf f){
+		
+	}
 	
 
 	
 	int getinventory(){
 		return numberinstock;
 		}
+	//check if low stock, and if so, add inventory 
 	void checkstatus(){
 		if (numberinstock<mininventory){		
 			increaseinventory(maxinventory-numberinstock);
