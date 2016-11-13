@@ -12,7 +12,7 @@ Floor: Qiansan (Xinyu Qian)
 
 Inventory:yunfjiang
 
-Visualizer:
+Visualizer:Xinglu Zhao
 
 Shelf:
 
