@@ -1,7 +1,12 @@
+/**
+ *
+ * @author Xinyu Qian
+ */
+import java.util.ArrayList;
 public class floor implements viewFloor,robotPath {
 	int size = 7;
-	Point[] belt = null;
-	Point[] sPoint = null;
+	ArrayList<Point> belt = new ArrayList<>();
+    ArrayList<Point> sPoint = new ArrayList<>();
 	Shelf[] shelf = new Shelf[4];
 	Point packer;
 	Point picker;
@@ -12,13 +17,13 @@ public class floor implements viewFloor,robotPath {
 	public floor(){
 		
 		for(int i = 0; i < 8; i++){
-			belt[i] = new Point(0, i);
-			belt[i].belt = true;
+			belt.add(new Point(0, i));
+            belt.get(i).belt = true;
 		}
 		
 		for(int i = 2; i < 6; i++){
-			sPoint[i] = new Point(4,i);
-			shelf[i] = new Shelf(sPoint[i]);
+			sPoint.add(new Point(4,i));
+            shelf[i-2] = new Shelf(sPoint.get(i-2));
 		}
 		packer = new Point(1,1);
 		packer.packer = true;
@@ -36,10 +41,10 @@ public class floor implements viewFloor,robotPath {
 		shipping.shipping = true;
 	}
 	
-	public Point[] getBelt(){
+	public ArrayList getBelt(){
 		return belt;
 	}
-	public Point[] getShelf(){
+	public ArrayList getShelf(){
 		return sPoint;
 	}
 	public Point getPacker(){
@@ -62,35 +67,36 @@ public class floor implements viewFloor,robotPath {
 		return size;
 	}
 	
-	private Point[] route = null;
-	public Point[] getRoute(Point p1, Point p2){
-		int move = Math.abs(p1.x - p2.x) + Math.abs(p1.x - p2.x);
-		for(int i=0; i< move-1;i++){
-			if(p1.x - p2.x > 1){
-				route[i] = new Point(p1.x -1, p1.y);
-			}
-			if(p1.x - p2.x < -1){
-				route[i] = new Point(p1.x +1, p1.y);
-			}else{
-				if(p1.y- p2.y > 0){
-					route[i] = new Point(p1.x, p1.y-1);
-				}
-				if(p1.y- p2.y < 0){
-					route[i] = new Point(p1.x, p1.y+1);
-				}else{
-					if(p1.x - p2.x > 0){
-						route[i] = new Point(p1.x -1, p1.y);
-					}
-					if(p1.x - p2.x < 0){
-						route[i] = new Point(p1.x +1, p1.y);
-					}
-				}
-			}
-			
-		}
-		route[move-1]= p2;
-		return route;
-	}
+	private ArrayList<Point> route = new ArrayList<>();
+    public ArrayList getRoute(Point p1, Point p2){
+        int move = Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
+        for(int i=0; i< move-1;i++){
+            if(p1.x - p2.x > 1){
+                route.add(new Point(p1.x -1, p1.y));
+            }
+            else if(p1.x - p2.x < -1){
+                route.add(new Point(p1.x +1, p1.y));
+            }else{
+                if(p1.y- p2.y > 0){
+                    route.add(new Point(p1.x, p1.y-1));
+                }
+                else if(p1.y- p2.y < 0){
+                    route.add(new Point(p1.x, p1.y+1));
+                
+                }else{
+                    if(p1.x - p2.x > 0){
+                        route.add(new Point(p1.x -1, p1.y));
+                    }
+                    if(p1.x - p2.x < 0){
+                        route.add(new Point(p1.x +1, p1.y));
+                    }
+                }
+            }
+            p1 = route.get(i);
+        }
+        route.add(p2);
+        return route;
+    }
 	
 }
 
@@ -119,6 +125,12 @@ class Point{
 			return false;
 		}
 	}
+	@Override
+    public String toString(){
+        String s;
+        s = String.format("(%d"+","+"%d)", x, y);
+        return s;
+    }
 	
 }
 
