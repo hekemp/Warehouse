@@ -20,7 +20,7 @@ public class Floor implements Event{
 	/**
 	 * Performs an action. Extracts the method to be executed and parameters from the method strong and then executes these
 	 * methods.
-	 * input - a string which contains a method name/key and parameters, seperated by commas
+	 * @input - a string which contains a method name/key and parameters, seperated by commas
 	 */
 	
 	public void performAction(String Method){
