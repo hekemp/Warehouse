@@ -14,13 +14,14 @@ public class floor implements viewFloor,robotPath {
 	Point charger;
 	Point shipping;
 	
+	//Initializing the floor
 	public floor(){
-		
+		// initialize the belt location
 		for(int i = 0; i < 8; i++){
 			belt.add(new Point(0, i));
             belt.get(i).belt = true;
 		}
-		
+		// initialize the shelf location
 		for(int i = 2; i < 6; i++){
 			sPoint.add(new Point(4,i));
             shelf[i-2] = new Shelf(sPoint.get(i-2));
@@ -67,8 +68,15 @@ public class floor implements viewFloor,robotPath {
 		return size;
 	}
 	
+	// the list of points for robot from p1 to p2
 	private ArrayList<Point> route = new ArrayList<>();
-    public ArrayList getRoute(Point p1, Point p2){
+    /**
+     * @auther Xinyu Qian
+     * @param p1 start point
+     * @param p2 end point
+     * @return the ArrayList of points from p1 to p2
+     */
+	public ArrayList getRoute(Point p1, Point p2){
         int move = Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
         for(int i=0; i< move-1;i++){
             if(p1.x - p2.x > 1){
@@ -100,9 +108,14 @@ public class floor implements viewFloor,robotPath {
 	
 }
 
-
+/**
+ * 
+ * @author Xinyu Qian
+ */
 class Point{
 	int x, y;
+	
+	//this part would be ignored for right now
 	boolean belt = false;
 	boolean shelf = false;
 	boolean picker = false;
@@ -110,7 +123,13 @@ class Point{
 	boolean receving = false;
 	boolean shipping = false;
 	boolean charger = false;
+	/////////////////////////
 	
+	/**
+     * 
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     */
 	public Point(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -118,13 +137,16 @@ class Point{
 	public Point(){ 
 		this(5, 7);
 	}
+	
+	// if the point is a highway return true
 	public boolean highway(){
-		if(shelf||picker||packer||receving||shipping||charger){
-			return true;
-		}else{
-			return false;
-		}
+		return shelf||picker||packer||receving||shipping||charger;
 	}
+	
+	/**
+     * 
+     * @return a readable tuple of the point
+     */
 	@Override
     public String toString(){
         String s;
@@ -134,7 +156,10 @@ class Point{
 	
 }
 
-
+/**
+ * 
+ * @author Xinyu Qian
+ */
 class Shelf{
 	int Capacity = 20;
 	int x, y;
@@ -154,6 +179,10 @@ class Shelf{
 	
 	// floor will memorize the new location where robot
 	// put the shelf at
+	/**
+     * 
+     * @param P the location where robot drop the shelf
+     */
 	public Point reSetLocation(Point P){
 		this.x = P.x;
 		this.y = P.y;
