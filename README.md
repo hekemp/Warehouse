@@ -8,7 +8,7 @@ Event: hekemp
 
 Belt: melkeurti
 
-Floor: Qiansan (Xinyu Qian)
+Floor: Qiansan (Xinyu Qian) the method return a path from point A to B is available (for Robot)
 
 Inventory:yunfjiang
 
