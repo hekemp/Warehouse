@@ -19,12 +19,12 @@ public class floor implements viewFloor,robotPath {
 		// initialize the belt location
 		for(int i = 0; i < 8; i++){
 			belt.add(new Point(0, i));
-            belt.get(i).belt = true;
+			belt.get(i).belt = true;
 		}
 		// initialize the shelf location
 		for(int i = 2; i < 6; i++){
 			sPoint.add(new Point(4,i));
-            shelf[i-2] = new Shelf(sPoint.get(i-2));
+			shelf[i-2] = new Shelf(sPoint.get(i-2));
 		}
 		packer = new Point(1,1);
 		packer.packer = true;
