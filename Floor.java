@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class floor implements viewFloor,robotPath {
 	int size = 7;
 	ArrayList<Point> belt = new ArrayList<>();
-    ArrayList<Point> sPoint = new ArrayList<>();
+	ArrayList<Point> sPoint = new ArrayList<>();
 	Shelf[] shelf = new Shelf[4];
 	Point packer;
 	Point picker;
