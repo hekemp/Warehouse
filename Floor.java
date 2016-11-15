@@ -161,7 +161,8 @@ class Point{
  * @author Xinyu Qian
  */
 class Shelf{
-	int Capacity = 20;
+	int items = 0;
+	ArrayList<item> Item = new ArrayList()<>;
 	int x, y;
 	public Shelf(Point P){
 		this.x = P.x;
@@ -169,12 +170,21 @@ class Shelf{
 		P.shelf = true;
 	}
 	
-	public int addItems(int amount){
-		return Capacity += amount;
+	public String addItems(item I){
+		Item.add(I);
+		items++;
+		if(items == 20) return "This shelf is full.";
+		if(items > 20){
+			items--;
+			return "Load fails, shelf is full.";
+		}
+		return String.format("Add item %1$d %s to shelf", I.itemID, I.type);
 	}
 	
-	public int reduceItems(int amount){
-		return Capacity -= amount;
+	public String removeItems(item I){
+		Item.remove(Item.indexOf(I));
+		items--;
+		return String.format("Removed item %1$d %s from shelf", I.itemID, I.type);;
 	}
 	
 	// floor will memorize the new location where robot
