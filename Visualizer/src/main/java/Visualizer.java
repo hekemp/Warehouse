@@ -115,19 +115,25 @@ class MyPanel extends JPanel {
  * setup method just print out where fixed things are in the warehouse
  */
     
-    public void tick(int time){
+    public void tick(int count){
         String display = "Tick %d";
-	System.out.println(String.format(display,time));
-	System.out.println("Item is at:"+b.TrackItem());
-        System.out.println("Robot is at"+r.TrackRobot());
+	
+        System.out.println(String.format(display,count));
+        if (b.ismove==true){
+	System.out.println("Item is at:"+b.TrackItem());}
+        if(r.ismove==true){
+        System.out.println("Robot is at"+r.TrackRobot());}
+        if (m.isshelfchange()==true){
 	for(int i=0;i<m.j;i++){
-        System.out.println("Shelf"+i+"is at"+m.getShelf().get(i));}//indicate where each shelf is
+           System.out.println("Shelf"+i+"is at"+m.getShelf().get(i));}//shelf
+    }
     }
 /**
  *
  * @author zhaoxinglu
  * @input int, make method print out things state at input time
  * @param String just represents word tick
+ * tick method update item coordinates at specific time
  */
     
     
