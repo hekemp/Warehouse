@@ -21,10 +21,17 @@ import static org.mockito.Mockito.when;
 /**
  *
  * @author zhaoxinglu
+ * Visualizer class is use Java Swing to show a picture of
+ * what is happening in the warehouse
  */
 public class Visualizer {
-   
-    
+ 
+/**
+ *
+ * @author zhaoxinglu
+ * main method mainly calls createandshowGUI method
+ */
+  
     
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
@@ -33,7 +40,15 @@ public class Visualizer {
         }
       });
     }
-
+/**
+ *
+ * @author zhaoxinglu
+ * @param f is an instance of JFram class,it creates a window 
+ * that has decorations such as a border, a title, and supports button components. 
+ * we use a constructor that lets us set the frame title "warehouse"
+ * we use add method to add the content designed by ourselves
+ * The EXIT_ON_CLOSE operation exits the program when user closes the frame
+ */
     private static void createAndShowGUI() {
        
         JFrame f = new JFrame("Warehouse");
@@ -46,42 +61,74 @@ public class Visualizer {
 
 
 }
+/**
+ *
+ * @author zhaoxinglu
+ * MyPanel class collect warehouse data and visualizes it on the panel
+ */
+  
 class MyPanel extends JPanel {
     
     Mockfloor m;
     MockBelt b=new MockBelt();
     MockRobot r=new MockRobot();
-    List<Point> allPoints;
+ /**
+ *
+ * @author zhaoxinglu
+ * @param m is a object of Mockfloor class, Mypanel can get information of warehouse from it
+ * @param b is a object of MockBelt class, Mypanel class can get track of the item on the belt
+ * @param r is a object of MockRobot class,Mypanel class can get coordinate of the robot
+ * all mock class has been written for convinient testing
+ */
+  
     
     public MyPanel(Mockfloor m1) {
          setBorder(BorderFactory.createLineBorder(Color.black));
          this.m=m1;
          setup();
     }
-   
+   /**
+ *
+ * @author zhaoxinglu
+ * @input Mockfloor, which initialize the instance variable m
+ * MyPanel initializer set GUI border to be black
+ * also calls setup method 
+ */
     
     
     public void setup(){
-        allPoints=new ArrayList<Point>();
-        for (int i=0;i<m.getWarehousesize();i++)
-	  for (int j=0;j<m.getWarehousesize();j++)
-		allPoints.add(new Point(i,j));
+       
         System.out.println("Warehouse size is:"+m.size);
-        System.out.println("Belt information");
+        System.out.print("Belt information");
         System.out.println("Picker at:"+m.getPicker());
         System.out.println("Packer at:"+m.getPacker());
         System.out.println("Shipping dock at"+m.getShippingDock());
         System.out.println("Receiving Dock at"+m.getReceivingDock());
         System.out.println("Charger at"+m.getCharger());
-        System.out.println("Item is at:"+b.TrackItem());
-        System.out.println("Robot is at"+r.TrackRobot());
+        
        
     }
+	
+/**
+ *
+ * @author zhaoxinglu
+ * setup method just print out where fixed things are in the warehouse
+ */
     
-    public void tick(int count){
+    public void tick(int time){
         String display = "Tick %d";
-	System.out.println(String.format(display,count)); 
+	System.out.println(String.format(display,time));
+	System.out.println("Item is at:"+b.TrackItem());
+        System.out.println("Robot is at"+r.TrackRobot());
+	for(int i=0;i<m.j;i++){
+        System.out.println("Shelf"+i+"is at"+m.getShelf().get(i));}//indicate where each shelf is
     }
+/**
+ *
+ * @author zhaoxinglu
+ * @input int, make method print out things state at input time
+ * @param String just represents word tick
+ */
     
     
     public void paint(Graphics g) {
@@ -106,6 +153,12 @@ class MyPanel extends JPanel {
        g.drawRect(b.TrackItem().x*20+10, b.TrackItem().y*20+10, 20, 20);//item
        
   }
+/**
+*
+* @author zhaoxinglu
+* @param Graphics
+* paint method temporarily uses mock object and expected return data to draw the warehouse
+*/
 }
 
 
