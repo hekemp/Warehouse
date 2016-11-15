@@ -10,8 +10,12 @@ import java.util.ArrayList;
 /**
  *
  * @author zhaoxinglu
+ *
  */
 public class Mockfloor {
+   /**
+   * A fake Floor component for testing purposes only
+   */
     int size = 7;
     ArrayList<Point> belt = new ArrayList<>();
     ArrayList<Point> sPoint = new ArrayList<>();
@@ -23,6 +27,12 @@ public class Mockfloor {
     Point shippingdock;
     int j=0;
     int b=0;
+    boolean shelfchange=true;
+   /**
+   * @author zhaoxinglu
+   * Constructor of Mock Floor
+   * 
+   */
     public Mockfloor(){
         // initialize the belt location
         
@@ -42,20 +52,19 @@ public class Mockfloor {
 	shippingdock = new Point(0,0);
 		
     }
+    /**
+   * @author zhaoxinglu
+   * these methods just simply return values we need
+   * 
+   */
     public int getWarehousesize() { return size; }
-  
     public Point getPicker() { return picker; }
     public Point getPacker() { return packer; }
     public Point getShippingDock() { return shippingdock; }
     public Point getReceivingDock() { return receivingdock; }
     public Point getCharger() { return charger; }
-    public ArrayList getBelt(){
-		return belt;
-	}
-	public ArrayList getShelf(){
-		return sPoint;
-	}
+    public ArrayList getBelt(){return belt;}
+    public ArrayList getShelf(){return sPoint;}
+     public boolean isshelfchange(){ return shelfchange;}
 
-    
-    
 }
