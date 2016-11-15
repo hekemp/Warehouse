@@ -7,6 +7,7 @@
 /**
  *
  * @author zhaoxinglu
+ * TestV class is to test Visualizer by creating an instance of it
  */
 public class TestV {
     
