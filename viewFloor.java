@@ -1,8 +1,8 @@
 
 // interface for visualizer
 public interface viewFloor {
-	public Point[] getBelt();
-	public Point[] getShelf();
+	public ArrayList getBelt();
+	public ArrayList getShelf();
 	public Point getPacker();
 	public Point getPicker();
 	public Point getReceving();
