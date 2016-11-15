@@ -2,85 +2,69 @@ package inventory;
 
 import java.awt.List;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-/**
- * 
- * @author Yunfan Jiang
- *
- */
+
 public class itemcontrol {
-	int numberinstock;
+	int totalnum;
 	int currentID;           
 	int maxinventory=80;
-	int mininventory;
-	String[] itemtypes;
-	Floor floor;
-	HashMap<String,ArrayList<Integer>> inventory; //key: item type, value: item ID 
-	//initialize
-	String[] itemlist={"pen","pear","apple","banana","pen","pineapple"};
-	void itemcontrol(){
-		numberinstock=0;
+	String[] itemlist={"pen","pear","apple","banana","pen","pineapple","eraser","ruler","comic book","ruler","laptop","pear","eraser","comic book"};
+	
+	public void itemcontrol(){
+		//import a list of items
 		currentID=0;
-		//extract item from the item list and put it on the shelf.
+		totalnum=0;
 		for (int z=0;z<itemlist.length&&z<maxinventory;z++){
 			item a= new item(currentID);    
 			a.type=itemlist[z]; 
-			additemtostock(a);
-			placeitemtoshelf(a);
+			placeitemtoshelf(item x);
 			currentID++;
+			totalnum++;
 		}
 		
 	}
-	item finditem(String product){
-		
-		
-		
+	public Shelf finditem(String product){
+		for (int j=0;j<floor.shelf.length;j++){  //need to check if shelf is moving here
+			for (item i:floor.shelf[j]){
+				if(i.type==product){
+					return i.place;
+				}
+				
+			}
+		}	
 	}
 	
-	Item removeitem(item a, Shelf f){
-		
+	public item removeitem(item i, Shelf y){
+		y.removeItems(i);
+		totalnum--;
+		return i;
 	}
-	
 
 	
-	int getinventory(){
-		return numberinstock;
-		}
-	//check if low stock, and if so, add inventory 
-	void checkstatus(){
-		if (numberinstock<mininventory){		
-			increaseinventory(maxinventory-numberinstock);
+	public void checkstatus(){
+		if (totalnum<20){		
+			increaseinventory(maxinventory-totalnum);
 			}
 		}
 		
-	void additemtostock(item x){
-		if (inventory.containsKey(x.type)){
-			ArrayList<Integer> temp= inventory.get(x.type);
-			temp.add(x.itemID);
-			inventory.put(x.type, (temp));  
-		}
-		else {
-			ArrayList<Integer> val= new ArrayList<Integer>();
-			val.add(x.itemID);
-			inventory.put(x.type, val);
-		}
-	}
-	void placeitemtoshelf(item x){
-		for (int j=0;j<floor.shelf;j++){
-			if(floor.shelf[j].full==false){
-				floor.shelf[j].addItem(x.itemID);	
-				break;
+	
+	public void placeitemtoshelf(item x){
+		for (int j=0;j<floor.shelf.length;j++){
+			if(floor.shelf[j].items<20){
+				floor.shelf[j].addItems(x.itemID);	
+				break;	
 			}
 		}
 	}
 	
 	
-	void increaseinventory(int x){
-		while(currentID<maxinventory){
+	public void increaseinventory(int x){
+		while(totalnum<maxinventory){
 			item a= new item(currentID);    
 			a.type=itemlist[currentID];
-			additemtostock(a);
+			//unfinished
+			//need to call available robots here
+			for (Robot i:)
 			placeitemtoshelf(a);
 			currentID++;	
 	}
