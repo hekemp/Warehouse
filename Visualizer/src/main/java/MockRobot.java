@@ -7,14 +7,36 @@
 /**
  *
  * @author zhaoxinglu
+ * This class make a fake robot object
  */
 public class MockRobot {
     Point robot;
+    boolean ismove;
+ /**
+ * @author zhaoxinglu
+ * @param Point, indicate the coordinate of robot in the map
+ * @param boolean, indicate robot state
+ */
     public MockRobot(){
         robot=new Point(4,3);
-    }
-   public Point TrackRobot(){
+        ismove=true;
+    }//initialize where robot is originally and continuously move
+  
+    
+    public Point TrackRobot(){
        return robot;
    }
+/**
+ * @author zhaoxinglu
+ * @return Point, keep track of where robot is in the map
+ */
+    public void changemovestate(boolean t){
+       ismove=t;
+       
+   }
+/**
+ * @author zhaoxinglu
+ * This method change the robot state, make it possible to stop
+ */
     
 }
