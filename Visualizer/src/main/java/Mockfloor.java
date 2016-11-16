@@ -27,7 +27,7 @@ public class Mockfloor {
     Point shippingdock;
     int j=0;
     int b=0;
-    boolean shelfchange=true;
+   
    /**
    * @author zhaoxinglu
    * Constructor of Mock Floor
@@ -65,6 +65,6 @@ public class Mockfloor {
     public Point getCharger() { return charger; }
     public ArrayList getBelt(){return belt;}
     public ArrayList getShelf(){return sPoint;}
-     public boolean isshelfchange(){ return shelfchange;}
+    
 
 }
