@@ -11,7 +11,7 @@
  */
 public class MockRobot {
     Point robot;
-    boolean ismove;
+    
  /**
  * @author zhaoxinglu
  * @param Point, indicate the coordinate of robot in the map
@@ -30,10 +30,7 @@ public class MockRobot {
  * @author zhaoxinglu
  * @return Point, keep track of where robot is in the map
  */
-    public void changemovestate(boolean t){
-       ismove=t;
-       
-   }
+   
 /**
  * @author zhaoxinglu
  * This method change the robot state, make it possible to stop
