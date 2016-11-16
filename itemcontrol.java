@@ -3,6 +3,7 @@ package inventory;
 import java.awt.List;
 import java.util.ArrayList;
 
+//@author Yunfan Jiang
 
 public class itemcontrol {
 	int totalnum;
@@ -10,6 +11,7 @@ public class itemcontrol {
 	int maxinventory=80;
 	String[] itemlist={"pen","pear","apple","banana","pen","pineapple","eraser","ruler","comic book","ruler","laptop","pear","eraser","comic book"};
 	
+	//initialize at the first tick/ event
 	public void itemcontrol(){
 		//import a list of items
 		currentID=0;
@@ -23,6 +25,7 @@ public class itemcontrol {
 		}
 		
 	}
+	//Order can use this method to locate the item
 	public Shelf finditem(String product){
 		for (int j=0;j<floor.shelf.length;j++){  //need to check if shelf is moving here
 			for (item i:floor.shelf[j]){
@@ -34,13 +37,15 @@ public class itemcontrol {
 		}	
 	}
 	
+	
+	//Order can use this method to remove item from shelf before putting it put on the belt
 	public item removeitem(item i, Shelf y){
 		y.removeItems(i);
 		totalnum--;
 		return i;
 	}
 
-	
+	//Everytime an order is completed, check status and update stock
 	public void checkstatus(){
 		if (totalnum<20){		
 			increaseinventory(maxinventory-totalnum);
@@ -48,7 +53,7 @@ public class itemcontrol {
 		}
 		
 	
-	public void placeitemtoshelf(item x){
+	private void placeitemtoshelf(item x){
 		for (int j=0;j<floor.shelf.length;j++){
 			if(floor.shelf[j].items<20){
 				floor.shelf[j].addItems(x.itemID);	
@@ -58,7 +63,7 @@ public class itemcontrol {
 	}
 	
 	
-	public void increaseinventory(int x){
+	private void increaseinventory(int x){
 		while(totalnum<maxinventory){
 			item a= new item(currentID);    
 			a.type=itemlist[currentID];
