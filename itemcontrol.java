@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 //@author Yunfan Jiang
 
-public class itemcontrol {
+public class itemcontrol implements Event{
 	int totalnum;
 	int currentID;           
 	int maxinventory=80;
@@ -75,7 +75,20 @@ public class itemcontrol {
 	}
 	
 	}
+	public void performAction(String Method){
+		System.out.println("Inventory did something");
+	}
 	
+	
+	public Event getEvent(){
+
+	     return (Event) this;
+	   }
+	
+	
+	public String getPara(){
+	    return "Null";
+	   }
 
 
 }
