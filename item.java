@@ -7,7 +7,7 @@ package inventory;
 
 public class item {
 	String type;      
-	int itemID;       //Each item has an integer assigned as an unique itemID
+	int itemID;       //Each item has an integer assigned as its unique itemID
 	Shelf place;
 	
 	item(int id, String name){
