@@ -15,7 +15,7 @@ public class MockRobot {
  /**
  * @author zhaoxinglu
  * @param Point, indicate the coordinate of robot in the map
- * @param boolean, indicate robot state
+ * 
  */
     public MockRobot(){
         robot=new Point(4,3);
