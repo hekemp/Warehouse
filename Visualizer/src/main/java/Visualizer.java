@@ -119,14 +119,14 @@ class MyPanel extends JPanel {
         String display = "Tick %d";
 	
         System.out.println(String.format(display,count));
-        if (b.ismove==true){
-	System.out.println("Item is at:"+b.TrackItem());}
-        if(r.ismove==true){
-        System.out.println("Robot is at"+r.TrackRobot());}
-        if (m.isshelfchange()==true){
+        
+	System.out.println("Item is at:"+b.TrackItem());
+       
+        System.out.println("Robot is at"+r.TrackRobot());
+       
 	for(int i=0;i<m.j;i++){
            System.out.println("Shelf"+i+"is at"+m.getShelf().get(i));}//shelf
-    }
+    
     }
 /**
  *
