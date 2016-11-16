@@ -17,7 +17,6 @@ public class MockBelt {
  *
  * @author zhaoxinglu
  * @param Point, which represent the coordinates of item on the belt
- * @param boolean, we can know whether the item on the belt is move or not
  * These two provide useful information to Visulaizer 
  */
     public MockBelt(){
