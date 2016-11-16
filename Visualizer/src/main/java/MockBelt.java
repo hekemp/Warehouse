@@ -12,7 +12,7 @@
 public class MockBelt {
   
     Point item;
-    boolean ismove;
+    
   /**
  *
  * @author zhaoxinglu
@@ -22,7 +22,7 @@ public class MockBelt {
  */
     public MockBelt(){
         item=new Point(0,3);
-        ismove=true;
+       
     }
  /**
  *
@@ -39,13 +39,5 @@ public class MockBelt {
  * @return Point, the coordinate of item
  * 
  */
-    public void changemovestate(boolean t){
-        ismove=t;
-    }
-  /**
- *
- * @author zhaoxinglu
- * @param boolean, which can be used to change the state of item
- * 
- */
+   
 }
