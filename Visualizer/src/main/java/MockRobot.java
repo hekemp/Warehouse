@@ -31,9 +31,6 @@ public class MockRobot {
  * @return Point, keep track of where robot is in the map
  */
    
-/**
- * @author zhaoxinglu
- * This method change the robot state, make it possible to stop
- */
+
     
 }
