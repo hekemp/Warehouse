@@ -19,7 +19,7 @@ public class MockRobot {
  */
     public MockRobot(){
         robot=new Point(4,3);
-        ismove=true;
+        
     }//initialize where robot is originally and continuously move
   
     
